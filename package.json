@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/OrangeBorning/jsBridge/issues"
   },
-  "homepage": "https://github.com/OrangeBorning/jsBridge#readme"
+  "homepage": "https://github.com/OrangeBorning/jsBridge#readme",
+  "dependencies": {}
 }
