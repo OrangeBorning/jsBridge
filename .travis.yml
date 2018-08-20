@@ -10,9 +10,9 @@ jobs:                            # 添加 job
     - stage: npm release   
       if: tag IS present         # 如果 push的代码 存在 tag
       node_js: "8"               # 使用 8.x 的 node
-      script: yarn compile       # 执行 yarn compile 命令(按照实际情况调整)
-      before_deploy:             # 在 发布之前, 执行命令(按照实际情况调整)
-        - cd dist
+      # script: yarn compile       # 执行 yarn compile 命令(按照实际情况调整)
+      # before_deploy:             # 在 发布之前, 执行命令(按照实际情况调整)
+      #   - cd dist
       deploy:
         provider: npm
         email: "$NPM_EMAIL"
