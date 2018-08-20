@@ -1,7 +1,7 @@
 {
     "name": "javascript-bridge",
-    "version": "1.0.1",
-    "description": "WebViewJavascriptBridge ",
+    "version": "1.0.2",
+    "description": "H5和客户端之间使用到的桥接封装",
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,13 @@
     },
     "keywords": [
       "javascript-bridge",
-      "jsbridge"
+      "jsbridge",
+      "bridge"
     ],
-    "author": "zhuxiaopeng",
+    "author": {
+        "name": "zhuxiaopeng",
+        "email": "orangeborningzxp@gmail.com"
+      },
     "license": "ISC",
     "bugs": {
       "url": "https://github.com/OrangeBorning/jsBridge/issues"
