@@ -1,6 +1,5 @@
 module.exports = {
   base: '/jsBridge/',
-  dest: '.vuepress/dist',
   locales: {
     '/': {
       lang: 'zh-CN',
