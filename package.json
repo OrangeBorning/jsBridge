@@ -6,7 +6,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy-gh": "bash scripts/deploy-gh.sh",
+    "deploy-gh": "bash scripts/deploy.sh",
     "test": "node test/index.js"
   },
   "repository": {

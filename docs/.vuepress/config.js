@@ -1,9 +1,9 @@
 module.exports = {
-  dest: 'JavascriptBridge',
+  dest: 'jsBridge',
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'JavascriptBridgeess',
+      title: 'jsBridge',
       description: 'H5 与客户端之间使用到的桥接封装'
     }
   },
