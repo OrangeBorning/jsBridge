@@ -1,7 +1,7 @@
 {
   "name": "javascript-bridge",
   "version": "1.0.6",
-  "description": "H5和客户端之间使用到的桥接封装",
+  "description": "H5 和客户端之间使用到的桥接封装",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
