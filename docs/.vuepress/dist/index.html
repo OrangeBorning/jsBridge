@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavascriptBridge</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.cc2a2ebf.css" as="style"><link rel="preload" href="/assets/js/app.0b932733.js" as="script"><link rel="preload" href="/assets/js/4.088d23e4.js" as="script"><link rel="prefetch" href="/assets/js/2.cda51ec0.js"><link rel="prefetch" href="/assets/js/3.29cc9666.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cc2a2ebf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-exact-active router-link-active"></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content"><h1 id="javascriptbridge"><a href="#javascriptbridge" aria-hidden="true" class="header-anchor">#</a> JavascriptBridge</h1> <p>H5 与客户端之间使用到的桥接封装</p> <h2 id="basic-usage"><a href="#basic-usage" aria-hidden="true" class="header-anchor">#</a> Basic Usage</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> javascript-bridge
+or
+yarn add javascript-bridge
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> JSBridge <span class="token keyword">from</span> <span class="token string">'javascript-bridge'</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="h5页面中调用"><a href="#h5页面中调用" aria-hidden="true" class="header-anchor">#</a> H5页面中调用</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 初始化,判断当前是否存在可用的bridge对象</span>
+JsBridge<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// OC端 向 JS端 传数据的回调函数， 注册 registerHandler（标识符， 数据回调闭包）， 当OC端发起数据传送，会调用 function(数据, OC端给的回调函数)</span>
+JsBridge<span class="token punctuation">.</span><span class="token function">registerHandler</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> fun<span class="token punctuation">)</span>
+<span class="token comment">// JS端 向 OC端 传数据的方式，callHandler（方法标识符， 数据， 回调）</span>
+JsBridge<span class="token punctuation">.</span><span class="token function">callHandler</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> data<span class="token punctuation">,</span> fun<span class="token punctuation">)</span>
+</code></pre></div><h2 id="vue中使用示例"><a href="#vue中使用示例" aria-hidden="true" class="header-anchor">#</a> vue中使用示例</h2> <p>main.js</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> JsBridge <span class="token keyword">from</span> <span class="token string">'javascript-bridge'</span><span class="token punctuation">;</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$JsBridge <span class="token operator">=</span> JsBridge
+</code></pre></div><p>App.vue</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">this</span><span class="token punctuation">.</span>$JsBridge<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 连接App</span>
+</code></pre></div><p>Test.vue</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token function">registerFunName</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$JsBridge<span class="token punctuation">.</span><span class="token function">registerHandler</span><span class="token punctuation">(</span><span class="token string">'fun-name'</span><span class="token punctuation">,</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">// H5注册方法供客户端调用</span>
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>success <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                     
+         <span class="token comment">// do something                                          </span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+         <span class="token comment">// do something </span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">callFunName</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$JsBridge<span class="token punctuation">.</span><span class="token function">callHandler</span><span class="token punctuation">(</span><span class="token string">'fun-name'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// H5调用客户端注册的方法</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/4.088d23e4.js" defer></script><script src="/assets/js/app.0b932733.js" defer></script>
+  </body>
+</html>

@@ -1,9 +1,12 @@
 {
   "name": "javascript-bridge",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "H5和客户端之间使用到的桥接封装",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy-gh": "bash scripts/deploy-gh.sh",
     "test": "node test/index.js"
   },
   "repository": {
@@ -23,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/OrangeBorning/jsBridge/issues"
   },
-  "homepage": "https://github.com/OrangeBorning/jsBridge#readme"
+  "homepage": "https://github.com/OrangeBorning/jsBridge#readme",
+  "devDependencies": {
+    "vuepress": "^0.14.3",
+    "vuepress-theme-vue": "^1.1.0"
+  }
 }
