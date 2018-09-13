@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/jsBridge/',
   dest: 'jsBridge',
   locales: {
     '/': {
