@@ -6,6 +6,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "changelog": "github-changes -o OrangeBorning -r jsBridge  --use-commit-body",
     "deploy-gh": "bash scripts/deploy.sh",
     "test": "node test/index.js"
   },
