@@ -17,7 +17,7 @@
 
 export default {
   init: function(callback) {
-    var u = navigator.userAgent;
+    var u = navigator.userAgents;
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
     if (!isiOS) {
       // 判断当前是否存在可用的bridge对象
